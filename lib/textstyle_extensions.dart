@@ -1,11 +1,13 @@
 library textstyle_extensions;
 
 import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-extension TextStyleExtensions on TextStyle {
+const kDefaultFontSize = 14.0;
 
+extension TextStyleExtensions on TextStyle {
   // Weights
   TextStyle get thin => weight(FontWeight.w100);
   TextStyle get extraLight => weight(FontWeight.w200);
@@ -39,7 +41,7 @@ extension TextStyleExtensions on TextStyle {
   TextStyle size(double v) => copyWith(fontSize: v);
 
   /// Scales fontSize up or down
-  TextStyle scale(double v) => copyWith(fontSize: fontSize * v);
+  TextStyle scale(double v) => copyWith(fontSize: fontSize ?? kDefaultFontSize * v);
 
   /// Shortcut for fontWeight
   TextStyle weight(FontWeight v) => copyWith(fontWeight: v);
@@ -75,6 +77,6 @@ extension TextStyleExtensions on TextStyle {
   TextStyle textFeatures(List<FontFeature> v) => copyWith(fontFeatures: v);
 
   /// Shortcut for decoration
-  TextStyle textDecoration(TextDecoration v, {Color color, TextDecorationStyle style, double thickness}) =>
+  TextStyle textDecoration(TextDecoration v, {Color? color, TextDecorationStyle? style, double? thickness}) =>
       copyWith(decoration: v, decorationColor: color, decorationStyle: style, decorationThickness: thickness);
 }
